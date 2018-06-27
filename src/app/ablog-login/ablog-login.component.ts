@@ -1,29 +1,17 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
-import { AngularFireAuth  } from 'angularfire2/auth';
-import { Router } from '@angular/router';
-//import { moveIn } from '../router.animations';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth-service.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
-  // animations: [moveIn()],
-  // host: {'[@moveIn]': ''}
+  selector: 'app-ablog-login',
+  templateUrl: './ablog-login.component.html',
+  styleUrls: ['./ablog-login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class AblogLoginComponent implements OnInit {
+  email: string;
+  password: string;
 
-  error: any;
-  constructor(public af: AngularFireAuth, private router: Router) {
-
-      this.af.authState.subscribe(auth => { 
-      if(auth) {
-        this.router.navigateByUrl('/members');
-      }
-    });
-
-  }
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
   }
-
 }

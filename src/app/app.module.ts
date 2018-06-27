@@ -9,12 +9,14 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AppComponent } from './app.component';
 import { AuthService } from './auth-service.service';
-//import { AuthGuard } from './auth.service';
-// import { routes } from './app.routes';
-// import { AblogLoginComponent } from './ablog-login/ablog-login.component';
-// import { AblogEmailComponent } from './ablog-email/ablog-email.component';
-// import { AblogSignupComponent } from './ablog-signup/ablog-signup.component';
-// import { AblogMainComponent } from './ablog-main/ablog-main.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AblogLoginComponent } from './ablog-login/ablog-login.component';
+import { AblogSignupComponent } from './ablog-signup/ablog-signup.component';
+import { AblogMainComponent } from './ablog-main/ablog-main.component';
+import {MatMenuModule} from '@angular/material/menu';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MatTabsModule } from '@angular/material/tabs';
+//import { MdTabsModule } from '@angular/material';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBrpSHGDN8KP2mPxWY6xLNFhRzp5GqO_Zg",
@@ -28,10 +30,9 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    // AblogLoginComponent,
-    // AblogEmailComponent,
-    // AblogSignupComponent,
-    // AblogMainComponent
+    AblogLoginComponent,
+    AblogSignupComponent,
+    AblogMainComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +43,11 @@ export const firebaseConfig = {
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     AngularFirestoreModule, 
-    AngularFireStorageModule
+    AngularFireStorageModule, 
+    AppRoutingModule,
+    MatMenuModule,
+    BrowserAnimationsModule,
+    MatTabsModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

@@ -14,22 +14,18 @@
   </div>
 </div> -->
 
-
-<h1 *ngIf="auth.user | async">Welcome {{ (auth.user | async)?.email }}!</h1>
-
-<div *ngIf="!(auth.user | async)">
-  <input type="text" [(ngModel)]="email" placeholder="email">
-  <input type="password" [(ngModel)]="password" placeholder="password">
-
-  <button (click)="signup()" [disabled]="!email || !password">
-    Signup
-  </button>
-
-  <button (click)="login()" [disabled]="!email || !password">
-    Login
-  </button>
+<div class="nav-container">
+  <ul class="nav-container__list">
+    <li class="nav-container__list--item"> <a routerLink="">Home</a></li>
+    <li class="nav-container__list--item" *ngIf="!(auth.user | async)"> <a routerLink="/login">Login</a></li>
+    <li class="nav-container__list--item" *ngIf="!(auth.user | async)"> <a routerLink="/signup">Signup</a></li>
+  </ul>
+  <div class="nav-container__user">
+    <span class="nav-container__user--greetings" *ngIf="auth.user | async">Signed in as {{ (auth.user | async)?.email }}!</span>
+    <button class="nav-container__user--logout-button" (click)="logout()" *ngIf="auth.user | async">
+        Logout
+    </button>
+  </div>
 </div>
+<router-outlet></router-outlet>
 
-<button (click)="logout()" *ngIf="auth.user | async">
-  Logout
-</button>
