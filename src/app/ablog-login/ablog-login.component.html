@@ -1,4 +1,4 @@
-<div *ngIf="!(auth.user | async)">
+<div *ngIf="!(auth.user | async)" class="login-container">
     <p>Please enter your data to login!</p>
     <input type="text" [(ngModel)]="email" placeholder="email">
     <input type="password" [(ngModel)]="password" placeholder="password">
